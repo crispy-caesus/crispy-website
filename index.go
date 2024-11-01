@@ -29,6 +29,12 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "index", p)
 }
 
+// New handler for plain text response
+func plainTextHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/plain")                   // Set content type to plain text
+	w.Write([]byte("dh=b81129b4e9cc388c5ab63919550316fc3ca5ebe4")) // Write the plain text response
+}
+
 func main() {
 	// Serve static files from the "static" directory at the "/static/" path
 	fs := http.FileServer(http.Dir("static"))
@@ -36,5 +42,10 @@ func main() {
 
 	// Set up the main route
 	http.HandleFunc("/", viewHandler)
+
+	// Set up a new route for plain text
+	http.HandleFunc("/.well-known/discord", plainTextHandler)
+
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
+
