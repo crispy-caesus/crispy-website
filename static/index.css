@@ -1,5 +1,3 @@
-/* style.css */
-
 /* Basic reset */
 * {
 	margin: 0;
@@ -7,25 +5,32 @@
 	box-sizing: border-box;
 }
 
-/* Centering and box styling */
+/* Body styling */
 body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
 	background-color: #f5f5f5;
 	font-family: Arial, sans-serif;
 	color: #333;
 	line-height: 1.6;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 100vh;
 }
 
-article {
+/* Center the main container */
+.container {
 	max-width: 35em;
 	width: 90%;
 	padding: 1em;
-	border: 2px solid #333;
+	border: 2px solid #ccc;
 	background-color: #fff;
+	margin-top: 1em;
 	text-align: center;
+}
+
+/* Article styling */
+article {
+	padding: 1em;
 }
 
 h1 {
@@ -60,4 +65,26 @@ a {
 
 a:hover {
 	text-decoration: underline;
+}
+
+/* Footer styling */
+footer {
+	margin-top: 20px;
+	padding: 10px;
+	background-color: #f3f3f3;
+	font-size: 1em;
+}
+
+.contact-info {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+}
+
+.contact-info span {
+	font-weight: bold;
+}
+
+hr {
+	border: 1px solid #ccc;
 }
