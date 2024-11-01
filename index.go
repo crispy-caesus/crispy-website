@@ -11,7 +11,7 @@ type Page struct {
 	Body  []byte
 }
 
-var templates = template.Must(template.ParseFiles("index.html"))
+var templates = template.Must(template.ParseFiles("templates/index.html"))
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 	err := templates.ExecuteTemplate(w, tmpl+".html", p)
@@ -21,11 +21,20 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
-	p := &Page{Title: "index"}
+	title := r.URL.Path[len("/"):] // Extract title from URL path
+	if title == "" {
+		title = "Home" // Default title if none provided
+	}
+	p := &Page{Title: title}
 	renderTemplate(w, "index", p)
 }
 
 func main() {
+	// Serve static files from the "static" directory at the "/static/" path
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
+	// Set up the main route
 	http.HandleFunc("/", viewHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
