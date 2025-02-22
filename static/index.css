@@ -114,3 +114,13 @@ footer {
 .toothbrush-img {
   height: 3em;
 }
+
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.non-pixelated {
+    image-rendering: optimizeQuality;
+}
