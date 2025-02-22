@@ -46,6 +46,6 @@ func main() {
 	// Set up a new route for plain text
 	http.HandleFunc("/.well-known/discord", plainTextHandler)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe("0.0.0.0:8080", nil))
 }
 
