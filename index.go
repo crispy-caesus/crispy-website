@@ -11,7 +11,7 @@ type Page struct {
 	Body  []byte
 }
 
-var templates = template.Must(template.ParseFiles("templates/index.html"))
+var templates = template.Must(template.ParseFiles("templates/index.html", "templates/discord-servers.html"))
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 	err := templates.ExecuteTemplate(w, tmpl+".html", p)
@@ -23,10 +23,10 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/"):] // Extract title from URL path
 	if title == "" {
-		title = "Home" // Default title if none provided
+		title = "index" // Default title if none provided
 	}
 	p := &Page{Title: title}
-	renderTemplate(w, "index", p)
+	renderTemplate(w, title, p)
 }
 
 // New handler for plain text response
