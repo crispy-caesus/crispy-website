@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>toothbrushing music</title>
+    <link rel="stylesheet" href="static/index.css" />
+</head>
+
+<body>
+    <h1>My bought music</h1>
+    <ul>
+        {{range .}}
+        <li>{{.Name}} - {{.Artist}}</li>
+        {{end}}
+    </ul>
+</body>
+
+</html>
