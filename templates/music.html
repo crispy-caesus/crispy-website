@@ -10,9 +10,13 @@
 
 <body>
     <h1>My bought music</h1>
+    <p>Spending so far: {{.Spending}}€</p>
     <ul>
-        {{range .}}
-        <li>{{.Name}} - {{.Artist}}</li>
+        {{range .Releases}}
+        <li>
+            <img src="{{.Note}}" alt="Album Cover" /> <br>
+            {{.Name}} - {{.Artist}}
+        </li>
         {{end}}
     </ul>
 </body>

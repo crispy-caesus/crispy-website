@@ -5,11 +5,19 @@ import (
 	"text/template"
 )
 
+type musicData struct {
+	Releases []musicItem
+	Spending float32
+}
+
 func musicHandler(w http.ResponseWriter, r *http.Request) {
 	results := loadMusic()
+	spending := getSpending()
 	tmpl := template.Must(template.ParseFiles("templates/music.html"))
 
-	err := tmpl.Execute(w, results)
+	data := musicData{Releases: results, Spending: spending}
+
+	err := tmpl.Execute(w, data)
 	if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
     }

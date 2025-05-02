@@ -8,14 +8,14 @@ import (
 )
 
 type musicItem struct {
-    id int
-    external_ids sql.NullString
-    Name string
-    Artist string
-    price float64
-    seller sql.NullString
-    note sql.NullString
-    purchase_date sql.NullString
+	id            int
+	external_ids  sql.NullString
+	Name          string
+	Artist        string
+	price         float64
+	seller        sql.NullString
+	Note          string
+	purchase_date sql.NullString
 }
 
 func openDB(DBName string) (*sql.DB, error) {
@@ -52,14 +52,31 @@ func loadMusic() []musicItem {
 			&result.Artist,
 			&result.price,
 			&result.seller,
-			&result.note,
+			&result.Note,
 			&result.purchase_date)
 		if err != nil {
 			log.Print(err)
 		}
-
 		results = append(results, result)
 	}
 	return results
 }
 
+func getSpending() (value float32) {
+	db, err := openDB("walletdrain")
+	if err != nil {
+		panic("couldn't open db")
+	}
+	defer db.Close()
+
+	query := "SELECT SUM(price) FROM music"
+
+	err = db.QueryRow(query).Scan(&value)
+	if err == sql.ErrNoRows {
+        log.Println("No rows found")
+    } else if err != nil {
+        log.Fatal(err)
+    }
+
+	return value
+}
