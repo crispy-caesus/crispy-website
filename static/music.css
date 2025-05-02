@@ -1,0 +1,28 @@
+body {
+  background-color: #1e2021;
+  font-family: Arial, sans-serif;
+  color: #c8c3bc;
+  line-height: 1.6;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 15em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  font-size: 1em;
+}
+
+ ul {
+     list-style-type: none;
+     padding: 0;
+ }
+
+ li {
+     display: flex;
+     align-items: center;
+     margin-bottom: 10px;
+ }
+
+ li img {
+     margin-right: 10px;
+ }

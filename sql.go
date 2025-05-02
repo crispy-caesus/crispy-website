@@ -69,7 +69,7 @@ func getSpending() (value float32) {
 	}
 	defer db.Close()
 
-	query := "SELECT SUM(price) FROM music"
+	query := "SELECT ROUND(SUM(price), 2) FROM music"
 
 	err = db.QueryRow(query).Scan(&value)
 	if err == sql.ErrNoRows {

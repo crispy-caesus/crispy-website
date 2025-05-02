@@ -5,16 +5,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>toothbrushing music</title>
-    <link rel="stylesheet" href="static/index.css" />
+    <link rel="stylesheet" href="static/music.css" />
 </head>
 
 <body>
     <h1>My bought music</h1>
+    <a title="Bandcamp" href="https://bandcamp.com/crispy-caesus" target="_blank" rel="noopener noreferrer">
+        My Bandcamp
+    </a>
     <p>Spending so far: {{.Spending}}€</p>
     <ul>
         {{range .Releases}}
         <li>
-            <img src="{{.Note}}" alt="Album Cover" /> <br>
+            <img src="{{.Note}}" alt="Album Cover" width="50" />
             {{.Name}} - {{.Artist}}
         </li>
         {{end}}
