@@ -34,7 +34,7 @@ func loadMusic() []musicItem {
 	}
 	defer db.Close()
 
-	query := "SELECT * FROM music"
+	query := "SELECT * FROM music ORDER BY purchase_date DESC"
 
 	rows, err := db.Query(query)
 	if err != nil {
