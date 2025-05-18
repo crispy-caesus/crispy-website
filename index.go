@@ -1,6 +1,8 @@
 package main
 
 import (
+	"crispy-website/code_pages"
+
 	"log"
 	"net/http"
 )
@@ -20,7 +22,8 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	http.HandleFunc("/", viewHandler)
-	http.HandleFunc("/music", musicHandler)
+	http.HandleFunc("/music", code_pages.MusicHandler)
+	http.HandleFunc("/blog", code_pages.BlogHandler)
 
 	http.HandleFunc("/.well-known/discord", plainTextHandler)
 

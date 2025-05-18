@@ -1,4 +1,4 @@
-package main
+package code_pages
 
 import (
 	"database/sql"

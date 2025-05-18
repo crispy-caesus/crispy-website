@@ -1,4 +1,4 @@
-package main
+package code_pages
 
 import (
 	"net/http"
@@ -10,7 +10,7 @@ type musicData struct {
 	Spending float32
 }
 
-func musicHandler(w http.ResponseWriter, r *http.Request) {
+func MusicHandler(w http.ResponseWriter, r *http.Request) {
 	results := loadMusic()
 	spending := getSpending()
 	tmpl := template.Must(template.ParseFiles("templates/music.html"))
