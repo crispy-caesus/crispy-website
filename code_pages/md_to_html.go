@@ -26,6 +26,7 @@ func fileReader() string {
 		log.Println(line)
 		text += line + "\n"
 
+// ------------------------ headings ------------------------ //
 		if len(line) > 1 {
 			if line[0] == '#' {
 				var currentCharIndex int
@@ -39,6 +40,11 @@ func fileReader() string {
 					}
 				}
 				html += fmt.Sprintf("<h%d>%s</h%d>\n", currentCharIndex, line[currentCharIndex:], currentCharIndex)
+				// ------------------------ dash stuff ------------------------ //
+			} else if line[0] == '-' {
+				if line[1] == '-' && line[2] == '-' {
+					html += "<hr>"
+				}
 			}
 		}
 	}
